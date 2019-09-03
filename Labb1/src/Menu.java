@@ -15,7 +15,7 @@ public class Menu {
 
     private static void printHeader() {
         System.out.println("+----------+");
-        System.out.println("|  Header  |");
+        System.out.println("|  Labb 1  |");
         System.out.println("+----------+");
     }
 

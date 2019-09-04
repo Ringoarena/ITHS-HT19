@@ -22,8 +22,8 @@ public class Menu {
     private static void printMenu() {
         System.out.println("\nMain menu");
         System.out.println("1. Call Circle class");
-        System.out.println("2. Option");
-        System.out.println("3. Option");
+        System.out.println("2. Call Rectangle class");
+        System.out.println("3. Call Triangle class");
         System.out.println("0. Exit");
     }
 
@@ -51,15 +51,27 @@ public class Menu {
                 exit = true;
                 break;
             case 1:
-                System.out.print("Enter the radius for the circle: ");
+                System.out.print("\nEnter the radius for the circle: ");
                 Circle c = new Circle(Double.parseDouble(sc.nextLine()));
                 System.out.println("Radius: "+c.getRadius()+" Area: "+ c.getArea()+" Circumference: "+c.getCircumference());
                 break;
             case 2:
-                System.out.println("\nCalling option 2...");
+                System.out.print("\nEnter the base for the rectangle: ");
+                double b = Double.parseDouble(sc.nextLine());
+                System.out.print("Enter the height for the rectangle: ");
+                double h = Double.parseDouble(sc.nextLine());
+                Rectangle r = new Rectangle(b, h);
+                System.out.println("Area: " + r.getArea() + " Perimiter: " + r.getPerimiter());
                 break;
             case 3:
-                System.out.println("\nCalling option 3...");
+                System.out.print("\nEnter side a for the triangle: ");
+                double A = Double.parseDouble(sc.nextLine());
+                System.out.print("Enter side b for the triangle: ");
+                double B = Double.parseDouble(sc.nextLine());
+                System.out.print("Enter side c for the triangle: ");
+                double C = Double.parseDouble(sc.nextLine());
+                Triangle t = new Triangle(A, B, C);
+                System.out.println("Area: "+t.getArea()+" Perimiter: "+t.getPerimiter());
                 break;
             default:
                 System.out.println("\nUnknown error...");

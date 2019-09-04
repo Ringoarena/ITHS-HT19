@@ -21,7 +21,7 @@ public class Menu {
 
     private static void printMenu() {
         System.out.println("\nMain menu");
-        System.out.println("1. Option");
+        System.out.println("1. Call Circle class");
         System.out.println("2. Option");
         System.out.println("3. Option");
         System.out.println("0. Exit");
@@ -51,7 +51,9 @@ public class Menu {
                 exit = true;
                 break;
             case 1:
-                System.out.println("\nCalling option 1...");
+                System.out.print("Enter the radius for the circle: ");
+                Circle c = new Circle(Double.parseDouble(sc.nextLine()));
+                System.out.println("Radius: "+c.getRadius()+" Area: "+ c.getArea()+" Circumference: "+c.getCircumference());
                 break;
             case 2:
                 System.out.println("\nCalling option 2...");

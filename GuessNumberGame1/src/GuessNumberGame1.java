@@ -5,7 +5,7 @@ public class GuessNumberGame1 {
     private int highLimit;
     private int guessCount;
 
-    private static double nGames;
+    private static int nGames;
     private static int totalGuessCount;
 
     public GuessNumberGame1(int highLimit) {
@@ -35,7 +35,7 @@ public class GuessNumberGame1 {
     }
 
     public static int getnGames(){
-        return (int)nGames;
+        return nGames;
     }
 
     public static int getTotalGuessCount(){
@@ -44,7 +44,7 @@ public class GuessNumberGame1 {
 
     public static double getAvgGuessCount(){
         if (0 < nGames) {
-            return totalGuessCount / nGames;
+            return (double)totalGuessCount / (double)nGames;
         } else {
             return 0;
         }

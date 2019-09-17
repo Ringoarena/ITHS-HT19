@@ -2,8 +2,8 @@ package model.employees;
 
 public class Bartender extends Employee {
 
-    public Bartender(String name, String dob) {
-        super(name, dob);
+    public Bartender(String name, String dob, GenderType gender) {
+        super(name, dob, gender);
         setSalary(13000);
 
     }

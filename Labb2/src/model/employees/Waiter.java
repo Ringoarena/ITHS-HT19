@@ -6,8 +6,8 @@ public class Waiter extends Employee {
 
     private int tip;
 
-    public Waiter(String name, String dob) {
-        super(name, dob);
+    public Waiter(String name, String dob, GenderType gender) {
+        super(name, dob, gender);
         setSalary(10000);
     }
 

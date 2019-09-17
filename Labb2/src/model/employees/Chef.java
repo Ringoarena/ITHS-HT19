@@ -3,8 +3,8 @@ package model.employees;
 public class Chef extends Employee{
 
     int noOfDrinksDuringWork;
-    public Chef(String name, String dob) {
-        super(name, dob);
+    public Chef(String name, String dob, GenderType gender) {
+        super(name, dob, gender);
         setSalary(15000);
     }
 

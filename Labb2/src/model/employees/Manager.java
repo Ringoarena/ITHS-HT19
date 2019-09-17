@@ -1,8 +1,8 @@
 package model.employees;
 
 public class Manager extends Employee {
-    public Manager(String name, String dob) {
-        super(name, dob);
+    public Manager(String name, String dob, GenderType gender) {
+        super(name, dob, gender);
         setSalary(18000);
     }
 

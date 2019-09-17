@@ -2,8 +2,8 @@ package model.employees;
 
 public class HR extends Employee {
 
-    public HR(String name, String dob) {
-        super(name, dob);
+    public HR(String name, String dob, GenderType gender) {
+        super(name, dob, gender);
         setSalary(16000);
     }
 

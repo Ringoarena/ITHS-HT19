@@ -10,12 +10,14 @@ public abstract class Employee {
     private String dob;
     private int ID;
     private double salary;
+    private GenderType gender;
 
     private static int IDGenerator;
 
-    public Employee(String name, String dob) {
+    public Employee(String name, String dob, GenderType gender) {
         this.name = name;
         this.dob = dob;
+        this.gender = gender;
         this.ID = ++IDGenerator;
     }
 
@@ -51,7 +53,7 @@ public abstract class Employee {
 
     @Override
     public String toString() {
-        return "Name: " + name + ", Date of birth: " + dob + ", ID: " + ID + ", Salary: " + salary;
+        return "Name: " + name + ", Date of birth: " + dob + ", ID: " + ID + ", Salary: " + salary + ", Gender: " + gender;
     }
 
     public long calculateAge(){

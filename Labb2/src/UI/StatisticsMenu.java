@@ -26,9 +26,12 @@ public class StatisticsMenu {
 
     private static void printMenu() {
         System.out.println("\nSub-menu");
-        System.out.println("1. List employees");
-        System.out.println("2. Sub-Option");
-        System.out.println("3. Sub-Option");
+        System.out.println("1. Average wage");
+        System.out.println("2. Maximum wage");
+        System.out.println("3. Minimum wage");
+        System.out.println("4. Total bonus");
+        System.out.println("5. Percentage women");
+        System.out.println("6. Percentage men per role");
         System.out.println("0. Return to previous menu");
     }
 
@@ -54,7 +57,7 @@ public class StatisticsMenu {
                 previous = true;
                 break;
             case 1:
-                EmployeeManagement.displayAllEmployees();
+
                 break;
             case 2:
                 System.out.println("\nCalling sub-option 2...");

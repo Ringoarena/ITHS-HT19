@@ -18,7 +18,7 @@ public class StatisticsMenu {
 
     private static void printHeader() {
         System.out.println("\n+-----------------+");
-        System.out.println("|Statistics-header|");
+        System.out.println("|Statistics Header|");
         System.out.println("+-----------------+");
     }
 

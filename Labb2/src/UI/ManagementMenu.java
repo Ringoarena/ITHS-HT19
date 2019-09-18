@@ -20,7 +20,7 @@ public class ManagementMenu {
 
     private static void printHeader() {
         System.out.println("\n+-----------------+");
-        System.out.println("|Management-header|");
+        System.out.println("|Management Header|");
         System.out.println("+-----------------+");
     }
 

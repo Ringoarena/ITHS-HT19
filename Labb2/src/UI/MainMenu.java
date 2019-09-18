@@ -4,7 +4,7 @@ import model.EmployeeManagement;
 
 import java.util.Scanner;
 
-public class Menu {
+public class MainMenu {
     private static boolean exit;
     private static Scanner sc = new Scanner(System.in);
 
@@ -18,9 +18,9 @@ public class Menu {
     }
 
     private static void printHeader() {
-        System.out.println("+----------+");
-        System.out.println("|  Header  |");
-        System.out.println("+----------+");
+        System.out.println("+---------------+");
+        System.out.println("|  Main Header  |");
+        System.out.println("+---------------+");
     }
 
     private static void printMenu() {

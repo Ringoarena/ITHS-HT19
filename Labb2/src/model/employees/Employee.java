@@ -23,6 +23,8 @@ public abstract class Employee {
 
     public abstract double bonus();
 
+    public abstract void performDuties();
+
     public String getName() {
         return name;
     }

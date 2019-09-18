@@ -25,9 +25,6 @@ public class EmployeeManagement {
         System.out.println("Enter DOB (yyyy-mm-dd)");
         String dob = sc.nextLine();
 
-        System.out.println("Enter employee salary");
-        double salary = Double.parseDouble(sc.nextLine());
-
         int gender;
         while (true) {
             System.out.println("Enter employee gender");
@@ -45,7 +42,6 @@ public class EmployeeManagement {
         }
 
         GenderType newEmployeeGender = null;
-
         switch(gender) {
             case 1:
                 newEmployeeGender = GenderType.FEMALE;

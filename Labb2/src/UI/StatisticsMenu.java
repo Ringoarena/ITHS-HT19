@@ -17,13 +17,13 @@ public class StatisticsMenu {
     }
 
     private static void printHeader() {
-        System.out.println("\n+----------+");
-        System.out.println("|Sub-header|");
-        System.out.println("+----------+");
+        System.out.println("\n+-----------------+");
+        System.out.println("|Statistics-header|");
+        System.out.println("+-----------------+");
     }
 
     private static void printMenu() {
-        System.out.println("\nSub-menu");
+        System.out.println("\nStatistics menu");
         System.out.println("1. Average wage");
         System.out.println("2. Maximum wage");
         System.out.println("3. Minimum wage");

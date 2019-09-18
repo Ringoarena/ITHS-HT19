@@ -19,13 +19,13 @@ public class ManagementMenu {
     }
 
     private static void printHeader() {
-        System.out.println("\n+----------+");
-        System.out.println("|Sub-header|");
-        System.out.println("+----------+");
+        System.out.println("\n+-----------------+");
+        System.out.println("|Management-header|");
+        System.out.println("+-----------------+");
     }
 
     private static void printMenu() {
-        System.out.println("\nManagement UI.Menu");
+        System.out.println("\nManagement Menu");
         System.out.println("1. Register employee");
         System.out.println("2. Delete employee by ID");
         System.out.println("3. Update name of employee");

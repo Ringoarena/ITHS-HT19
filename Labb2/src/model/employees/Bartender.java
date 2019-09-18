@@ -17,4 +17,10 @@ public class Bartender extends Employee {
     public String toString(){
         return super.toString() + " TIP placeholder";
     }
+
+	@Override
+	public void performDuties() {
+		// TODO Auto-generated method stub
+		
+	}
 }

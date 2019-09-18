@@ -13,7 +13,7 @@ public class Menu {
         EmployeeManagement.loadDB();
         while (!exit) {
             printMenu();
-            performAction(getInput());
+            performAction(Utilities.getInput(0, 2));
         }
     }
 
@@ -30,21 +30,21 @@ public class Menu {
         System.out.println("0. Exit");
     }
 
-    private static int getInput() {
-        int nDecision = 5;
-        int decision = -1;
-        while (!(0 <= decision && decision <= nDecision)) {
-            System.out.print("Enter decision: ");
-            try {
-                decision = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException ignored) {
-            }
-            if (!(0 <= decision && decision <= nDecision)) {
-                System.out.println("Illegal input, numbers from 0 to " + nDecision + " only!");
-            }
-        }
-        return decision;
-    }
+//    private static int getInput() {
+//        int nDecision = 5;
+//        int decision = -1;
+//        while (!(0 <= decision && decision <= nDecision)) {
+//            System.out.print("Enter decision: ");
+//            try {
+//                decision = Integer.parseInt(sc.nextLine());
+//            } catch (NumberFormatException ignored) {
+//            }
+//            if (!(0 <= decision && decision <= nDecision)) {
+//                System.out.println("Illegal input, numbers from 0 to " + nDecision + " only!");
+//            }
+//        }
+//        return decision;
+//    }
 
     private static void performAction(int decision) {
         switch (decision) {

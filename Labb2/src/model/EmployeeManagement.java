@@ -10,8 +10,6 @@ public class EmployeeManagement {
     private static ArrayList<Employee> employeeDB = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
 
-
-
     public static void loadDB(){
         employeeDB.add(new Waiter("Rikard", "1990-09-25", GenderType.MALE));
         employeeDB.add(new Waiter("Johannes", "1930-09-25", GenderType.MALE));
@@ -32,7 +30,7 @@ public class EmployeeManagement {
 
         int gender;
         while (true) {
-            System.out.println("Enter gender");
+            System.out.println("Enter employee gender");
             System.out.println("1. Female");
             System.out.println("2. Male");
             System.out.println("3. Other");
@@ -43,7 +41,7 @@ public class EmployeeManagement {
                 } else {
                     System.out.println("Enter a number from 1 to 3 only!");
                 }
-            } catch (NumberFormatException ignor) { }
+            } catch (NumberFormatException ignored) {}
         }
 
         GenderType newEmployeeGender = null;
@@ -78,7 +76,7 @@ public class EmployeeManagement {
                 } else {
                     System.out.println("Enter a number from 1 to 5 only!");
                 }
-            } catch (NumberFormatException ignor) { }
+            } catch (NumberFormatException ignored) { }
         }
         switch(role){
             case 1:

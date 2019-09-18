@@ -1,7 +1,5 @@
 package UI;
 
-import model.EmployeeManagement;
-
 import java.util.Scanner;
 
 public class StatisticsMenu {
@@ -14,7 +12,7 @@ public class StatisticsMenu {
 
         while (!previous) {
             printMenu();
-            performAction(getInput());
+            performAction(Utilities.getInput(0, 6));
         }
     }
 
@@ -35,20 +33,20 @@ public class StatisticsMenu {
         System.out.println("0. Return to previous menu");
     }
 
-    private static int getInput() {
-        int nDecision = 3;
-        int decision = -1;
-        while (!(0 <= decision && decision <= nDecision)) {
-            System.out.print("Enter decision: ");
-            try {
-                decision = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException ignored) {}
-            if (!(0 <= decision && decision <= nDecision)) {
-                System.out.println("Illegal input, numbers from 0 to " + nDecision + " only!");
-            }
-        }
-        return decision;
-    }
+//    private static int getInput() {
+//        int nDecision = 3;
+//        int decision = -1;
+//        while (!(0 <= decision && decision <= nDecision)) {
+//            System.out.print("Enter decision: ");
+//            try {
+//                decision = Integer.parseInt(sc.nextLine());
+//            } catch (NumberFormatException ignored) {}
+//            if (!(0 <= decision && decision <= nDecision)) {
+//                System.out.println("Illegal input, numbers from 0 to " + nDecision + " only!");
+//            }
+//        }
+//        return decision;
+//    }
 
     private static void performAction(int decision) {
         switch (decision) {
@@ -57,7 +55,7 @@ public class StatisticsMenu {
                 previous = true;
                 break;
             case 1:
-
+                System.out.println("\nCalling sub-option 1...");
                 break;
             case 2:
                 System.out.println("\nCalling sub-option 2...");

@@ -1,7 +1,7 @@
 public class BubbleSort {
 
     public int[] sort (int[] list) {
-        int i, j, temp = 0;
+        int i, j, temp;
 
         for (i = 0; i < list.length - 1; i++) {
             for (j = 0; j < list.length - 1; j++) {

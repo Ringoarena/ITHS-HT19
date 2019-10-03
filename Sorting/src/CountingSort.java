@@ -1,6 +1,6 @@
 public class CountingSort {
 
-    public Integer[] sort(Integer[] list) {
+    public int[] sort(int[] list) {
         int k, maxNumber = list[0];
 
         for (int i = 1; i < list.length; i++) {
@@ -13,10 +13,11 @@ public class CountingSort {
         return list;
     }
 
-    private Integer[] sort(Integer[] list, int k) {
+    private int[] sort(int[] list, int k) {
         int n = list.length;
-        Integer[] sortedOutput = new Integer[n];
-        Integer[] counts = new Integer[k];
+        int[] sortedOutput = new int[n];
+        int[] counts = new int[k];
+
         for (int i = 0; i < k; i++) {
             counts[i] = 0;
         }

@@ -1,6 +1,6 @@
 public class MergeSort {
 
-    public Integer[] sort(Integer[] list, int lowIndex, int highIndex) {
+    public int[] sort(int[] list, int lowIndex, int highIndex) {
         if (lowIndex == highIndex) {
             return list;
         } else {
@@ -12,7 +12,7 @@ public class MergeSort {
         return list;
     }
 
-    private void merge(Integer[] list, int lowIndex, int midIndex, int highIndex) {
+    private void merge(int[] list, int lowIndex, int midIndex, int highIndex) {
         int[] L = new int[midIndex - lowIndex + 2];
 
         for (int i = lowIndex; i <= midIndex; i++) {

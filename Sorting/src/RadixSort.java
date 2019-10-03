@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class RadixSort {
 
-    public Integer[] sort(Integer[] list) {
+    public int[] sort(int[] list) {
         int maxNumber = list[0];
         for (int i = 1; i < list.length; i++) {
             if (maxNumber < list[i]) {
@@ -15,7 +15,7 @@ public class RadixSort {
         return list;
     }
 
-    private void countSort(Integer[] list, int n, int exp) {
+    private void countSort(int[] list, int n, int exp) {
         Integer[] output = new Integer[n];
         int i;
         Integer[] count = new Integer[10];

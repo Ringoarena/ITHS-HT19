@@ -1,6 +1,6 @@
 public class InsertionSort {
 
-    public Integer[] sort(Integer[] list) {
+    public int[] sort(int[] list) {
         int i, j, k, temp;
 
         for (i = 1; i < list.length; i++) {

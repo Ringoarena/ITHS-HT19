@@ -61,7 +61,7 @@ public class Employee implements Comparable<Employee> {
         return Utilities.fixLengthString(getID(), 5) +
                 "  " + Utilities.fixLengthString(getName(), 20) +
                 "  " + Utilities.fixLengthString(((int) getSalary()), 7) +
-                "  " + Utilities.fixLengthString(this.getCurrentState().getDescription(), 12);
+                "  " + Utilities.fixLengthString(getCurrentState().getDescription(), 12);
     }
 
     public double getSalary() {

@@ -23,14 +23,14 @@ public class Employee implements Comparable<Employee> {
         System.out.println("\nSelect state");
         System.out.println("1. Waiter");
         System.out.println("2. Chef");
-        return StateFactory.getInstance(Utilities.getInput(1, 2));
+        return EmployeeState.getInstance(Utilities.getInput(1, 2));
     }
 
     public Employee(String name) {
         this.setName(name);
         this.setSalary(100);
         this.setID();
-        this.setCurrentState(StateFactory.getInstance(0));
+        this.setCurrentState(EmployeeState.getInstance(0));
     }
 
     public void setName(String input) {

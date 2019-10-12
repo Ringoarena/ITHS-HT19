@@ -1,6 +1,6 @@
 package state;
 
-public class NewEmployeeState implements EmployeeState {
+public class NewEmployeeState extends EmployeeState {
 
     @Override
     public String getDescription() {

@@ -1,6 +1,6 @@
 package state;
 
-public class WaiterState implements EmployeeState {
+public class WaiterState extends EmployeeState {
 
     @Override
     public String getDescription() {

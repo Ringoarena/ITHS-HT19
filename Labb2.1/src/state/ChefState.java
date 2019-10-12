@@ -1,6 +1,6 @@
 package state;
 
-public class ChefState implements EmployeeState {
+public class ChefState extends EmployeeState {
 
     @Override
     public String getDescription() {

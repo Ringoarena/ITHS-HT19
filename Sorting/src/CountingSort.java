@@ -9,11 +9,10 @@ public class CountingSort {
             }
         }
         k = maxNumber +1;
-        list = sort(list, k);
-        return list;
+        return sort(list, k);
     }
 
-    private int[] sort(int[] list, int k) {
+    public int[] sort(int[] list, int k) {
         int n = list.length;
         int[] sortedOutput = new int[n];
         int[] counts = new int[k];

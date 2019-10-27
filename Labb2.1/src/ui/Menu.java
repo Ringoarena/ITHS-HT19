@@ -2,6 +2,8 @@ package ui;
 
 import model.Employee;
 import model.EmployeeManager;
+import sortingStrategy.NameSalary;
+
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -104,9 +106,10 @@ public class Menu {
             System.out.println("1. salary, ascending");
             System.out.println("2. salary, descending");
             System.out.println("3. Sort alphabetical by name");
-            System.out.println("4. Sort using overrriden method");
+            System.out.println("4. Sort using compareTo()");
+            System.out.println("5. By name then salary");
             System.out.println("0. Previous menu");
-            switch (Utilities.getInput(0, 4)) {
+            switch (Utilities.getInput(0, 5)) {
                 case 0:
                     System.out.println("\nReturning to previous menu...");
                     previous = true;
@@ -132,6 +135,10 @@ public class Menu {
                 case 4:
                     // sort using Comparable
                     Collections.sort(employeeManager.getEmployees());
+                    employeeManager.listEmployees();
+                    break;
+                case 5:
+                    employeeManager.getEmployees().sort(new NameSalary());
                     employeeManager.listEmployees();
                     break;
                 default:

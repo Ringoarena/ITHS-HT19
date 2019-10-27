@@ -1,4 +1,8 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 // https://visualgo.net/bn/sorting
 
@@ -16,7 +20,7 @@ public class Main {
         CountingSort countingSort = new CountingSort();
         RadixSort radixSort = new RadixSort();
 
-        int size = 50000;
+        int size = 20000;
         System.out.println("Size: " + size);
         int[] array = new int[size];
 

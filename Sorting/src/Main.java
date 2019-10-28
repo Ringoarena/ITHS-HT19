@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -23,6 +24,7 @@ public class Main {
         int size = 20000;
         System.out.println("Size: " + size);
         int[] array = new int[size];
+        List<Integer> myList = new ArrayList<>();
 
         for (int i = 0; i < array.length; i++) {
             array[i] = random.nextInt(size + 1);

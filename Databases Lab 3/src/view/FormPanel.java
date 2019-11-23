@@ -1,7 +1,6 @@
 package view;
 
 import com.github.lgooddatepicker.components.DatePicker;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
@@ -34,42 +33,9 @@ public class FormPanel extends JPanel {
         Border innerBorder = BorderFactory.createTitledBorder("Add person");
         Border outerBorder = BorderFactory.createEmptyBorder();
         setBorder(new CompoundBorder(innerBorder,outerBorder));
-        //setPreferredSize(new Dimension(250, 10));
         setMinimumSize(new Dimension(250,10));
 
         layoutComponents();
-    }
-
-    public JComboBox getGenderCombo() {
-        return genderCombo;
-    }
-
-    public DatePicker getDatePicker() {
-        return datePicker;
-    }
-
-    public JLabel getNameLabel() {
-        return nameLabel;
-    }
-
-    public void setNameLabel(JLabel nameLabel) {
-        this.nameLabel = nameLabel;
-    }
-
-    public JTextField getNameField() {
-        return nameField;
-    }
-
-    public void setNameField(JTextField nameField) {
-        this.nameField = nameField;
-    }
-
-    public JButton getOkButton() {
-        return okButton;
-    }
-
-    public void setOkButton(JButton okButton) {
-        this.okButton = okButton;
     }
 
     public void layoutComponents() {
@@ -127,5 +93,21 @@ public class FormPanel extends JPanel {
         gc.gridx = 0;
         gc.anchor = GridBagConstraints.LINE_END;
         add(okButton, gc);
+    }
+
+    public JComboBox getGenderCombo() {
+        return genderCombo;
+    }
+
+    public DatePicker getDatePicker() {
+        return datePicker;
+    }
+
+    public JTextField getNameField() {
+        return nameField;
+    }
+
+    public JButton getOkButton() {
+        return okButton;
     }
 }

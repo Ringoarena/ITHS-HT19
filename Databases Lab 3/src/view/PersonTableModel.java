@@ -1,7 +1,6 @@
 package view;
 
 import model.Person;
-
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;

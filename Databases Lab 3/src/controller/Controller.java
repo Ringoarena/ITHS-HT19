@@ -1,7 +1,7 @@
 package controller;
 
 import model.PersonDAOImplementation;
-import model.enums.Gender;
+import model.Gender;
 import view.MainFrame;
 import javax.swing.*;
 import java.awt.event.MouseAdapter;

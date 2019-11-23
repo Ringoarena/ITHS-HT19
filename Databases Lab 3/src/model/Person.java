@@ -1,7 +1,5 @@
 package model;
 
-import model.enums.Gender;
-
 import java.time.LocalDate;
 
 public class Person {
@@ -27,10 +25,6 @@ public class Person {
 
     public LocalDate getBirthDate() {
         return birthDate;
-    }
-
-    public int getAge() {
-        return 10;
     }
 
     public Gender getGender() {

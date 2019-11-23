@@ -1,7 +1,5 @@
 package model;
 
-import model.enums.Gender;
-
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;

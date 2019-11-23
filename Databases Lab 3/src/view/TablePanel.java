@@ -11,15 +11,12 @@ public class TablePanel extends JPanel {
 
     public TablePanel() {
         table = new JTable();
-        jPopupMenu = new JPopupMenu();
         deleteItem = new JMenuItem("Delete");
         updateItem = new JMenuItem("Update");
-
+        jPopupMenu = new JPopupMenu();
         jPopupMenu.add(deleteItem);
         jPopupMenu.add(updateItem);
-
         table.setModel(new PersonTableModel());
-
         setLayout(new BorderLayout());
         add(new JScrollPane(table), BorderLayout.CENTER);
     }

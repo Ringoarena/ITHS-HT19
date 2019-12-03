@@ -5,11 +5,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonDAOImplementation implements PersonDAO {
+public class JDBCImplementation implements PersonDAO {
     Connection connection;
     PreparedStatement insert, findAll, delete, updateName;
 
-    public PersonDAOImplementation() {
+    public JDBCImplementation() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/db0", "root", "root");

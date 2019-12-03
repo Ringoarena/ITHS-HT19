@@ -1,6 +1,6 @@
 package controller;
 
-import model.PersonDAOImplementation;
+import model.PersonDAO;
 import model.Gender;
 import view.MainFrame;
 import javax.swing.*;
@@ -8,10 +8,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Controller {
-    PersonDAOImplementation dao;
+    PersonDAO dao;
     MainFrame mainFrame;
 
-    public Controller(PersonDAOImplementation dao, MainFrame mainFrame) {
+    public Controller(PersonDAO dao, MainFrame mainFrame) {
         this.dao = dao;
         this.mainFrame = mainFrame;
     }
@@ -22,10 +22,10 @@ public class Controller {
     }
 
     public void initiateController() {
-        mainFrame.getTablePanel().getTable().addMouseListener(myMouseAdapter());
+        mainFrame.getFormPanel().getOkButton().addActionListener( e -> addPerson());
         mainFrame.getTablePanel().getDeleteItem().addActionListener(e -> deletePerson());
         mainFrame.getTablePanel().getUpdateItem().addActionListener(e -> updatePerson());
-        mainFrame.getFormPanel().getOkButton().addActionListener( e -> addPerson());
+        mainFrame.getTablePanel().getTable().addMouseListener(myMouseAdapter());
     }
 
     public void addPerson() {

@@ -1,12 +1,13 @@
 package controller;
 
-import model.PersonDAOImplementation;
+import model.PersonDAO;
+import model.JDBCImplementation;
 import view.MainFrame;
 
 public class Launcher {
     public static void main(String[] args) {
-        PersonDAOImplementation dao = new PersonDAOImplementation();
-        MainFrame mainFrame = new MainFrame("MVC with Rick");
+        PersonDAO dao = new JDBCImplementation();
+        MainFrame mainFrame = new MainFrame("Person database program");
         Controller controller = new Controller(dao,mainFrame);
         controller.initiateView();
         controller.initiateController();

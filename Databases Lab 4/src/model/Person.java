@@ -25,6 +25,12 @@ public class Person {
     public Person() {
     }
 
+    public Person(String name, LocalDate localDate, Gender gender) {
+        this.name = name;
+        this.birthDate = localDate;
+        this.gender = gender;
+    }
+
     public Person(int id, String name, LocalDate localDate, Gender gender) {
         this.id = id;
         this.name = name;

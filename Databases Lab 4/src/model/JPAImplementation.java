@@ -17,11 +17,7 @@ public class JPAImplementation implements PersonDAO {
     public void create(String name, LocalDate localDate, Gender gender) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        Person p = new Person();
-        p.setName(name);
-        p.setBirthDate(localDate);
-        p.setGender(gender);
-        em.persist(p);
+        em.persist(new Person(name,localDate,gender));
         em.getTransaction().commit();
     }
 

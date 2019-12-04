@@ -7,5 +7,5 @@ public interface PersonDAO {
     void create(String name, LocalDate localDate, Gender gender);
     List<Person> getAll();
     boolean updateNameByID(int id, String name);
-    boolean deleteByID(int id);
+    void deleteByID(int id);
 }

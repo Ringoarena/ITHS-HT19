@@ -63,14 +63,10 @@ public class JDBCImplementation implements PersonDAO {
         return list;
     }
 
-    public boolean deleteByID(int id) {
+    public void deleteByID(int id) {
         try {
             delete.setInt(1, id);
-            if (delete.executeUpdate() > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            delete.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("PersonDAO deleteByID() error");
         }

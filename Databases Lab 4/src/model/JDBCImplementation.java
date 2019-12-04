@@ -34,49 +34,37 @@ public class JDBCImplementation implements PersonDAO{
     }
 
     public List<Person> getAll() {
+        List<Person> list = new ArrayList<>();
         try {
-            return listFromStatement(findAll);
+            ResultSet rs = findAll.executeQuery();
+            while (rs.next()) {
+                list.add(new Person(rs.getInt("idpersons"),
+                        rs.getString("name"),
+                        rs.getDate("dateofbirth").toLocalDate(),
+                        Gender.valueOf(rs.getString("gender"))));
+            }
         } catch (SQLException e) {
-            throw new RuntimeException("PersonDAO getALL() error");
+            throw new RuntimeException("JDBCImplementation getAll() error");
         }
+        return list;
     }
 
-    public boolean updateNameByID(int id, String name) {
+    public void updateNameByID(int id, String name) {
         try {
             updateName.setString(1,name);
             updateName.setInt(2, id);
-            if (updateName.executeUpdate() > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            updateName.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("PersonDAO updateNameByID() error");
         }
     }
 
-    public boolean deleteByID(int id) {
+    public void deleteByID(int id) {
         try {
             delete.setInt(1, id);
-            if (delete.executeUpdate() > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            delete.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("PersonDAO deleteByID() error");
         }
-    }
-
-    private List<Person> listFromStatement(PreparedStatement statement) throws SQLException {
-        List<Person> list = new ArrayList<>();
-        ResultSet rs = statement.executeQuery();
-        while (rs.next()) {
-            list.add(new Person(rs.getInt("idpersons"),
-                    rs.getString("name"),
-                    rs.getDate("dateofbirth").toLocalDate(),
-                    Gender.valueOf(rs.getString("gender"))));
-        }
-        return list;
     }
 }

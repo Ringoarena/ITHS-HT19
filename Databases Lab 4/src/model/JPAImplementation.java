@@ -29,22 +29,20 @@ public class JPAImplementation implements PersonDAO {
     }
 
     @Override
-    public boolean updateNameByID(int id, String name) {
+    public void updateNameByID(int id, String name) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Person p = em.find(Person.class, id);
         p.setName(name);
         em.getTransaction().commit();
-        return true;
     }
 
     @Override
-    public boolean deleteByID(int id) {
+    public void deleteByID(int id) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Person p = em.find(Person.class, id);
         em.remove(p);
         em.getTransaction().commit();
-        return true;
     }
 }

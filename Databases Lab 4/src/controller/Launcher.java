@@ -7,10 +7,10 @@ import view.MainFrame;
 
 public class Launcher {
     public static void main(String[] args) {
-        //PersonDAO dao = new JDBCImplementation();
-        PersonDAO dao = new JPAImplementation();
+        PersonDAO jdbc = new JDBCImplementation();
+        PersonDAO jpa = new JPAImplementation();
         MainFrame mainFrame = new MainFrame("Person database program");
-        Controller controller = new Controller(dao,mainFrame);
+        Controller controller = new Controller(jpa,mainFrame);
         controller.initiateView();
         controller.initiateController();
     }

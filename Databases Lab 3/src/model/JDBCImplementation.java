@@ -22,15 +22,11 @@ public class JDBCImplementation implements PersonDAO {
         }
     }
 
-    public boolean updateNameByID(int id, String name) {
+    public void updateNameByID(int id, String name) {
         try {
             updateName.setString(1,name);
             updateName.setInt(2, id);
-            if (updateName.executeUpdate() > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            updateName.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("PersonDAO updateNameByID() error");
         }

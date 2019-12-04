@@ -6,6 +6,6 @@ import java.util.List;
 public interface PersonDAO {
     void create(String name, LocalDate localDate, Gender gender);
     List<Person> getAll();
-    boolean updateNameByID(int id, String name);
+    void updateNameByID(int id, String name);
     void deleteByID(int id);
 }

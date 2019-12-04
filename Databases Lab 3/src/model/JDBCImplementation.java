@@ -18,7 +18,7 @@ public class JDBCImplementation implements PersonDAO {
             delete = connection.prepareStatement("DELETE FROM persons WHERE idpersons = ?");
             updateName = connection.prepareStatement("UPDATE persons SET name = ? WHERE idpersons = ?");
         } catch (Exception e) {
-            throw new RuntimeException("PersonDAO constructor() problem");
+            throw new RuntimeException("JDBCImplementation constructor() problem");
         }
     }
 
@@ -43,16 +43,24 @@ public class JDBCImplementation implements PersonDAO {
             insert.setString(3,gender.name());
             insert.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("PersonDAO create() error");
+            throw new RuntimeException("JDBCImplementation create() error");
         }
     }
 
     public List<Person> getAll() {
+        List<Person> list = new ArrayList<>();
         try {
-            return listFromStatement(findAll);
+            ResultSet rs = findAll.executeQuery();
+            while (rs.next()) {
+                list.add(new Person(rs.getInt("idpersons"),
+                        rs.getString("name"),
+                        rs.getDate("dateofbirth").toLocalDate(),
+                        Gender.valueOf(rs.getString("gender"))));
+            }
         } catch (SQLException e) {
-            throw new RuntimeException("PersonDAO getALL() error");
+            throw new RuntimeException("JDBCImplementation getAll() error");
         }
+        return list;
     }
 
     public boolean deleteByID(int id) {
@@ -66,17 +74,5 @@ public class JDBCImplementation implements PersonDAO {
         } catch (SQLException e) {
             throw new RuntimeException("PersonDAO deleteByID() error");
         }
-    }
-
-    private List<Person> listFromStatement(PreparedStatement statement) throws SQLException {
-        List<Person> list = new ArrayList<>();
-        ResultSet rs = statement.executeQuery();
-        while (rs.next()) {
-            list.add(new Person(rs.getInt("idpersons"),
-                    rs.getString("name"),
-                    rs.getDate("dateofbirth").toLocalDate(),
-                    Gender.valueOf(rs.getString("gender"))));
-        }
-        return list;
     }
 }

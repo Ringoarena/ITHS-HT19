@@ -39,7 +39,7 @@ public class Controller {
     public void deletePerson() {
         JTable table = mainFrame.getTablePanel().getTable();
         int row = table.getSelectedRow();
-        int id = Integer.parseInt(table.getModel().getValueAt(row, 0).toString());
+        int id = (int) table.getModel().getValueAt(row, 0);
         dao.deleteByID(id);
         mainFrame.getTablePanel().getModel().setData(dao.getAll());
         mainFrame.getTablePanel().getModel().fireTableDataChanged();
@@ -48,7 +48,7 @@ public class Controller {
     public void updatePerson() {
         JTable table = mainFrame.getTablePanel().getTable();
         int row = table.getSelectedRow();
-        int id = Integer.parseInt(table.getModel().getValueAt(row, 0).toString());
+        int id = (int) table.getModel().getValueAt(row, 0);
         String newName = JOptionPane.showInputDialog("Enter new name");
         dao.updateNameByID(id, newName);
         mainFrame.getTablePanel().getModel().setData(dao.getAll());

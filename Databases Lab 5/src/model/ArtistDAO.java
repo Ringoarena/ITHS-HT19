@@ -35,7 +35,7 @@ public class ArtistDAO {
 
     public List<Artist> getArtists() {
         EntityManager em = emf.createEntityManager();
-        return em.createQuery("from Artist", Artist.class).getResultList();
+        return em.createQuery("SELECT a FROM Artist a", Artist.class).getResultList();
     }
 
     public void updateNameByID(String name, int id) {

@@ -87,14 +87,14 @@ public class EntityDAO {
 
     public List<Author> getAuthors() {
         EntityManager em = emf.createEntityManager();
-        List<Author> list = em.createQuery("SELECT a FROM Author a", Author.class).getResultList();
+        List<Author> list = em.createQuery("SELECT a FROM Author AS a LEFT JOIN FETCH a.books", Author.class).getResultList();
         em.close();
         return list;
     }
 
     public List<Book> getBooks() {
         EntityManager em = emf.createEntityManager();
-        List<Book> list = em.createQuery("SELECT b FROM Book b", Book.class).getResultList();
+        List<Book> list = em.createQuery("SELECT b FROM Book AS b LEFT JOIN FETCH b.authors", Book.class).getResultList();
         em.close();
         return list;
     }

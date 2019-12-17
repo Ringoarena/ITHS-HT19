@@ -12,7 +12,7 @@ public class Author {
 
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany()
     private Set<Book> books = new HashSet<>();
 
     public Author() {

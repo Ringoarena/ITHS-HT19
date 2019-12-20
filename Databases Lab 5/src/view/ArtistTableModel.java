@@ -15,16 +15,6 @@ public class ArtistTableModel extends AbstractTableModel {
     }
 
     @Override
-    public int getRowCount() {
-        return artists.size();
-    }
-
-    @Override
-    public int getColumnCount() {
-        return columnNames.length;
-    }
-
-    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Artist artist = artists.get(rowIndex);
         switch (columnIndex) {
@@ -36,6 +26,16 @@ public class ArtistTableModel extends AbstractTableModel {
                 return artist.getSongs().size();
         }
         return null;
+    }
+
+    @Override
+    public int getRowCount() {
+        return artists.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+        return columnNames.length;
     }
 
     @Override

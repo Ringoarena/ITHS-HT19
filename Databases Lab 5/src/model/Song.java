@@ -11,7 +11,7 @@ public class Song {
 
     String title;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     Artist artist;
 
     public Song() {

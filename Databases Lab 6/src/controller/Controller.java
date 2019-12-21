@@ -2,7 +2,6 @@ package controller;
 
 import model.MyEntityManager;
 import view.MainFrame;
-
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

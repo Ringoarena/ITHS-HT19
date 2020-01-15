@@ -1,0 +1,105 @@
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+/**
+ * @author sonde
+ */
+public class CourseDAO {
+    EntityManagerFactory emf;
+
+    public CourseDAO() {
+        emf = Persistence.createEntityManagerFactory("DBLab7PU");
+    }
+
+    public Course addCourse(Course course) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(course);
+        em.getTransaction().commit();
+        em.close();
+        return course;
+    }
+
+    public void removeCourseById(int id) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Course course = em.find(Course.class, id);
+        for (Education education : course.getEducations()) {
+            course.removeEducation(education);
+        }
+        for (Teacher teacher : course.getTeachers()) {
+            course.removeTeacher(teacher);
+        }
+        em.remove(course);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public void addTeacherToCourse(int courseId, int teacherId) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Course course = em.find(Course.class, courseId);
+        Teacher teacher = em.find(Teacher.class, teacherId);
+        course.addTeacher(teacher);
+        em.persist(course);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public Course getById(int id) {
+        EntityManager em = emf.createEntityManager();
+        Course course = em.find(Course.class, id);
+        em.close();
+        return course;
+    }
+
+    public void updateCourseName(int id,String newName) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Course course = em.find(Course.class, id);
+        course.setName(newName);
+        em.persist(course);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public List<Course> getCourses() {
+        EntityManager em = emf.createEntityManager();
+        List<Course> courses = em.createQuery("SELECT c FROM Course AS c ", Course.class).getResultList();
+        em.close();
+        return courses;
+    }
+//    public List<Course> getCourses() {
+//        EntityManager em = emf.createEntityManager();
+//        List<Course> courses = em.createQuery("SELECT c FROM Course AS c "
+//                + "LEFT JOIN FETCH c.educations "
+//                + "LEFT JOIN FETCH c.teachers", Course.class).getResultList();
+//        em.close();
+//        return courses;
+//    }
+
+    public List<Teacher> getCourseTeachers(int courseId) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Course course = em.find(Course.class, courseId);
+        List<Teacher> list = new ArrayList<>(course.getTeachers());
+        em.getTransaction().commit();
+        em.close();
+        return list;
+    }
+
+    public List<Education> getCourseEducations(int courseId) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Course course = em.find(Course.class, courseId);
+        List<Education> list = new ArrayList<>(course.getEducations());
+        em.getTransaction().commit();
+        em.close();
+        return list;
+    }
+}

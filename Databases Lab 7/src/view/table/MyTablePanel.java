@@ -6,7 +6,6 @@ import model.Student;
 import model.Teacher;
 import view.event.*;
 import view.listener.*;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
@@ -42,10 +41,11 @@ public class MyTablePanel extends JPanel {
         headerLabel.setFont(new Font("Arial", Font.PLAIN, 30));
         headerLabel.setBorder(new EmptyBorder(10, 30, 10, 0));
         jScrollPane.setBorder(new EtchedBorder());
-        setupJPopupMenus();
         eventListenerList = new EventListenerList();
-        setupListeners();
         setLayout(new BorderLayout());
+        setupJPopupMenus();
+        setupListeners();
+        setTableModel(0);
         add(headerLabel, BorderLayout.NORTH);
         add(jScrollPane, BorderLayout.CENTER);
     }
@@ -116,73 +116,102 @@ public class MyTablePanel extends JPanel {
     }
 
     private void setupListeners() {
-        updateEducationItem.addActionListener(e -> fireUpdateEntityEvent(new UpdateEntityEvent(this,
+        updateEducationItem.addActionListener(e -> fireUpdateEntityEvent(new UpdateEntityEvent(
+                this,
                 getIdAtRow(),
                 JOptionPane.showInputDialog("Enter new education name:"),
-                jTable.getModel().getClass().getSimpleName())));
-        updateCourseItem.addActionListener(e -> fireUpdateEntityEvent(new UpdateEntityEvent(this,
+                getEntityType())));
+        updateCourseItem.addActionListener(e -> fireUpdateEntityEvent(new UpdateEntityEvent(
+                this,
                 getIdAtRow(),
                 JOptionPane.showInputDialog("Enter new course name:"),
-                jTable.getModel().getClass().getSimpleName())));
-        updateTeacherItem.addActionListener(e -> fireUpdateEntityEvent(new UpdateEntityEvent(this,
+                getEntityType())));
+        updateTeacherItem.addActionListener(e -> fireUpdateEntityEvent(new UpdateEntityEvent(
+                this,
                 getIdAtRow(),
                 JOptionPane.showInputDialog("Enter new teacher name:"),
-                jTable.getModel().getClass().getSimpleName())));
-        updateStudentItem.addActionListener(e -> fireUpdateEntityEvent(new UpdateEntityEvent(this,
+                getEntityType())));
+        updateStudentItem.addActionListener(e -> fireUpdateEntityEvent(new UpdateEntityEvent(
+                this,
                 getIdAtRow(),
                 JOptionPane.showInputDialog("Enter new student name:"),
-                jTable.getModel().getClass().getSimpleName())));
-        addCourseToEducationItem.addActionListener(e -> fireAssociateEntityEvent(new AssociateEntityEvent(this,
+                getEntityType())));
+        addCourseToEducationItem.addActionListener(e -> fireAssociateEntityEvent(new AssociateEntityEvent(
+                this,
                 getIdAtRow(),
                 Integer.parseInt(JOptionPane.showInputDialog("Enter course id:")),
                 true,
-                jTable.getModel().getClass().getSimpleName())));
-        addStudentToEducationItem.addActionListener(e -> fireAssociateEntityEvent(new AssociateEntityEvent(this,
+                getEntityType())));
+        addStudentToEducationItem.addActionListener(e -> fireAssociateEntityEvent(new AssociateEntityEvent(
+                this,
                 getIdAtRow(),
                 Integer.parseInt(JOptionPane.showInputDialog("Enter student id:")),
                 false,
-                jTable.getModel().getClass().getSimpleName())));
-        addTeacherToCourseItem.addActionListener(e -> fireAssociateEntityEvent(new AssociateEntityEvent(this,
+                getEntityType())));
+        addTeacherToCourseItem.addActionListener(e -> fireAssociateEntityEvent(new AssociateEntityEvent(
+                this,
                 getIdAtRow(),
                 Integer.parseInt(JOptionPane.showInputDialog("Enter teacher id:")),
                 false,
-                jTable.getModel().getClass().getSimpleName())));
+                getEntityType())));
         showEducationCoursesItem.addActionListener(e -> {
-            fireShowAssociatedEntityEvent(new ShowAssociatedEntityEvent(this, getIdAtRow(), jTable.getModel().getClass().getSimpleName(), e.getActionCommand()));
+            fireShowAssociatedEntityEvent(new ShowAssociatedEntityEvent(this, getIdAtRow(), getEntityType(), e.getActionCommand()));
             setTableModel(1);
         });
         showEducationStudentsItem.addActionListener(e -> {
-            fireShowAssociatedEntityEvent(new ShowAssociatedEntityEvent(this, getIdAtRow(), jTable.getModel().getClass().getSimpleName(), e.getActionCommand()));
+            fireShowAssociatedEntityEvent(new ShowAssociatedEntityEvent(this, getIdAtRow(), getEntityType(), e.getActionCommand()));
             setTableModel(3);
         });
         showCourseTeachersItem.addActionListener(e -> {
-            fireShowAssociatedEntityEvent(new ShowAssociatedEntityEvent(this, getIdAtRow(), jTable.getModel().getClass().getSimpleName(), e.getActionCommand()));
+            fireShowAssociatedEntityEvent(new ShowAssociatedEntityEvent(this, getIdAtRow(), getEntityType(), e.getActionCommand()));
             setTableModel(2);
         });
         showCourseEducationsItem.addActionListener(e -> {
-            fireShowAssociatedEntityEvent(new ShowAssociatedEntityEvent(this, getIdAtRow(), jTable.getModel().getClass().getSimpleName(), e.getActionCommand()));
+            fireShowAssociatedEntityEvent(new ShowAssociatedEntityEvent(this, getIdAtRow(), getEntityType(), e.getActionCommand()));
             setTableModel(0);
         });
         showTeacherCoursesItem.addActionListener(e -> {
-            fireShowAssociatedEntityEvent(new ShowAssociatedEntityEvent(this, getIdAtRow(), jTable.getModel().getClass().getSimpleName(), e.getActionCommand()));
+            fireShowAssociatedEntityEvent(new ShowAssociatedEntityEvent(this, getIdAtRow(), getEntityType(), e.getActionCommand()));
             setTableModel(1);
         });
         showStudentEducationItem.addActionListener(e -> {
-            fireShowAssociatedEntityEvent(new ShowAssociatedEntityEvent(this, getIdAtRow(), jTable.getModel().getClass().getSimpleName(), e.getActionCommand()));
+            fireShowAssociatedEntityEvent(new ShowAssociatedEntityEvent(this, getIdAtRow(), getEntityType(), e.getActionCommand()));
             setTableModel(0);
         });
-        deleteEducationItem.addActionListener(e -> fireDeleteEntityEvent(new DeleteEntityEvent(this,
-                getIdAtRow(),
-                jTable.getModel().getClass().getSimpleName())));
-        deleteCourseItem.addActionListener(e -> fireDeleteEntityEvent(new DeleteEntityEvent(this,
-                getIdAtRow(),
-                jTable.getModel().getClass().getSimpleName())));
-        deleteTeacherItem.addActionListener(e -> fireDeleteEntityEvent(new DeleteEntityEvent(this,
-                getIdAtRow(),
-                jTable.getModel().getClass().getSimpleName())));
-        deleteStudentItem.addActionListener(e -> fireDeleteEntityEvent(new DeleteEntityEvent(this,
-                getIdAtRow(),
-                jTable.getModel().getClass().getSimpleName())));
+        deleteEducationItem.addActionListener(e -> fireDeleteEntityEvent(new DeleteEntityEvent(this, getIdAtRow(), getEntityType())));
+        deleteCourseItem.addActionListener(e -> fireDeleteEntityEvent(new DeleteEntityEvent(this, getIdAtRow(), getEntityType())));
+        deleteTeacherItem.addActionListener(e -> fireDeleteEntityEvent(new DeleteEntityEvent(this, getIdAtRow(), getEntityType())));
+        deleteStudentItem.addActionListener(e -> fireDeleteEntityEvent(new DeleteEntityEvent(this, getIdAtRow(), getEntityType())));
+    }
+
+    private int getIdAtRow() {
+        int row = jTable.getSelectedRow();
+        return (int) jTable.getModel().getValueAt(row, 0);
+    }
+
+    private String getEntityType() {
+        return jTable.getModel().getClass().getSimpleName();
+    }
+
+    public void setTableModel(int modelTypeIndex) {
+        switch (modelTypeIndex) {
+            case 0:
+                jTable.setModel(educationTableModel);
+                headerLabel.setText("Educations");
+                break;
+            case 1:
+                jTable.setModel(courseTableModel);
+                headerLabel.setText("Courses");
+                break;
+            case 2:
+                jTable.setModel(teacherTableModel);
+                headerLabel.setText("Teachers");
+                break;
+            case 3:
+                jTable.setModel(studentTableModel);
+                headerLabel.setText("Students");
+                break;
+        }
     }
 
     public void addUpdateEntityListener(UpdateEntityListener listener) {
@@ -234,32 +263,6 @@ public class MyTablePanel extends JPanel {
             if (listeners[i] == DeleteEntityListener.class) {
                 ((DeleteEntityListener) listeners[i + 1]).deleteEntityEventOccurred(event);
             }
-        }
-    }
-
-    private int getIdAtRow() {
-        int row = jTable.getSelectedRow();
-        return (int) jTable.getModel().getValueAt(row, 0);
-    }
-
-    public void setTableModel(int modelTypeIndex) {
-        switch (modelTypeIndex) {
-            case 0:
-                jTable.setModel(educationTableModel);
-                headerLabel.setText("Educations");
-                break;
-            case 1:
-                jTable.setModel(courseTableModel);
-                headerLabel.setText("Courses");
-                break;
-            case 2:
-                jTable.setModel(teacherTableModel);
-                headerLabel.setText("Teachers");
-                break;
-            case 3:
-                jTable.setModel(studentTableModel);
-                headerLabel.setText("Students");
-                break;
         }
     }
 

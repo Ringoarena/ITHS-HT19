@@ -3,7 +3,6 @@ package view.form;
 import com.github.lgooddatepicker.components.DatePicker;
 import view.event.TeacherFormEvent;
 import view.listener.TeacherFormListener;
-
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.EventListenerList;

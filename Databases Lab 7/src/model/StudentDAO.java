@@ -32,13 +32,6 @@ public class StudentDAO {
         em.close();
     }
 
-    public Student getStudentById(int id) {
-        EntityManager em = emf.createEntityManager();
-        Student student = em.find(Student.class, id);
-        em.close();
-        return student;
-    }
-
     public void updateStudentName(int id,String newName) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();

@@ -3,7 +3,6 @@ package view.form;
 import com.github.lgooddatepicker.components.DatePicker;
 import view.event.CourseFormEvent;
 import view.listener.CourseFormListener;
-
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

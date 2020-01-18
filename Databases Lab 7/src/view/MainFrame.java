@@ -8,7 +8,6 @@ import view.event.*;
 import view.form.*;
 import view.listener.*;
 import view.table.MyTablePanel;
-
 import javax.swing.*;
 import javax.swing.event.EventListenerList;
 import java.awt.*;
@@ -104,6 +103,22 @@ public class MainFrame extends JFrame {
             fireListEntityEvent(new ListEntityEvent(this,3));
             myTablePanel.setTableModel(3);
         });
+    }
+
+    public void setEducationData(List<Education> educations) {
+        myTablePanel.setEducationData(educations);
+    }
+
+    public void setCourseData(List<Course> courses) {
+        myTablePanel.setCourseData(courses);
+    }
+
+    public void setTeacherData(List<Teacher> teachers) {
+        myTablePanel.setTeacherData(teachers);
+    }
+
+    public void setStudentData(List<Student> students) {
+        myTablePanel.setStudentData(students);
     }
 
     public void addEducationFormListener(EducationFormListener listener) {
@@ -221,21 +236,5 @@ public class MainFrame extends JFrame {
                 ((ListEntityListener)listeners[i+1]).listEntityEventOccurred(event);
             }
         }
-    }
-
-    public void setEducationData(List<Education> educations) {
-        myTablePanel.setEducationData(educations);
-    }
-
-    public void setCourseData(List<Course> courses) {
-        myTablePanel.setCourseData(courses);
-    }
-
-    public void setTeacherData(List<Teacher> teachers) {
-        myTablePanel.setTeacherData(teachers);
-    }
-
-    public void setStudentData(List<Student> students) {
-        myTablePanel.setStudentData(students);
     }
 }

@@ -2,8 +2,6 @@ package view.event;
 
 import java.util.EventObject;
 
-// Rikards version
-
 public class ListEntityEvent extends EventObject {
     private int modelTypeIndex;
 

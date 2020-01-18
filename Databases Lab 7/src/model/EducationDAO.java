@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -65,13 +64,6 @@ public class EducationDAO {
         em.close();
     }
 
-    public Education getEducationById(int id) {
-        EntityManager em = emf.createEntityManager();
-        Education education = em.find(Education.class, id);
-        em.close();
-        return education;
-    }
-
     public void updateEducationName(int id,String newName) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -88,15 +80,6 @@ public class EducationDAO {
         em.close();
         return educations;
     }
-
-//    public List<Education> getEducations() {
-//        EntityManager em = emf.createEntityManager();
-//        List<Education> educations = em.createQuery("SELECT e FROM Education AS e "
-//                + "LEFT JOIN FETCH e.students "
-//                + "LEFT JOIN FETCH e.courses", Education.class).getResultList();
-//        em.close();
-//        return educations;
-//    }
 
     public List<Course> getEducationCourses(int educationId) {
         EntityManager em = emf.createEntityManager();
@@ -117,13 +100,4 @@ public class EducationDAO {
         em.close();
         return list;
     }
-
-//    public List<Course> getEducationCourseJPQL(int educationId) {
-//        EntityManager em = emf.createEntityManager();
-//        em.getTransaction().begin();
-//        List<Course> list = em.createQuery("SELECT e FROM Education AS e LEFT JOIN FETCH e.courses WHERE e.id = :id",Course.class).setParameter("id", educationId).getResultList();
-//        em.getTransaction().commit();
-//        em.close();
-//        return list;
-//    }
 }

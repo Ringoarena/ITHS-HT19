@@ -34,13 +34,6 @@ public class TeacherDAO {
         em.close();
     }
 
-    public Teacher getTeacherById(int id) {
-        EntityManager em = emf.createEntityManager();
-        Teacher teacher = em.find(Teacher.class, id);
-        em.close();
-        return teacher;
-    }
-
     public void updateTeacherName(int id,String newName) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -57,15 +50,6 @@ public class TeacherDAO {
         em.close();
         return teachers;
     }
-
-//    public List<Teacher> getTeachers() {
-//        EntityManager em = emf.createEntityManager();
-//        List<Teacher> teachers = em.createQuery("" +
-//                "SELECT t FROM Teacher AS t " +
-//                "LEFT JOIN FETCH t.courses", Teacher.class).getResultList();
-//        em.close();
-//        return teachers;
-//    }
 
     public List<Course> getTeacherCourses(int teacherId) {
         EntityManager em = emf.createEntityManager();

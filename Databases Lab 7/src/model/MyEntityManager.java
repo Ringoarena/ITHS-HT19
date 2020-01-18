@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyEntityManager {
@@ -9,20 +8,12 @@ public class MyEntityManager {
     CourseDAO courseDAO;
     TeacherDAO teacherDAO;
     StudentDAO studentDAO;
-    List<Education> educations;
-    List<Course> courses;
-    List<Teacher> teachers;
-    List<Student> students;
 
     public MyEntityManager() {
         educationDAO = new EducationDAO();
         courseDAO = new CourseDAO();
         teacherDAO = new TeacherDAO();
         studentDAO = new StudentDAO();
-        educations = new ArrayList<>();
-        courses = new ArrayList<>();
-        teachers = new ArrayList<>();
-        students = new ArrayList<>();
     }
 
     public void createEducation(String name, LocalDate startDate, LocalDate endDate) {
@@ -30,7 +21,7 @@ public class MyEntityManager {
         education.setName(name);
         education.setStartDate(startDate);
         education.setEndDate(endDate);
-        educations.add(educationDAO.addEducation(education));
+        educationDAO.addEducation(education);
     }
 
     public void createCourse(String name, LocalDate startDate, LocalDate endDate) {
@@ -38,21 +29,21 @@ public class MyEntityManager {
         course.setName(name);
         course.setStartDate(startDate);
         course.setEndDate(endDate);
-        courses.add(courseDAO.addCourse(course));
+        courseDAO.addCourse(course);
     }
 
     public void createTeacher(String name, LocalDate birthDate) {
         Teacher teacher = new Teacher();
         teacher.setName(name);
         teacher.setBirthDate(birthDate);
-        teachers.add(teacherDAO.addTeacher(teacher));
+        teacherDAO.addTeacher(teacher);
     }
 
     public void createStudent(String name, LocalDate birthDate) {
         Student student = new Student();
         student.setName(name);
         student.setBirthDate(birthDate);
-        students.add(studentDAO.addStudent(student));
+        studentDAO.addStudent(student);
     }
 
     public void addCourseToEducation(int educationId, int courseId) {
@@ -97,17 +88,6 @@ public class MyEntityManager {
 
     public void updateStudentName(int id, String newName) {
         studentDAO.updateStudentName(id, newName);
-    }
-
-    public void updateCache() {
-        educations.clear();
-        educations.addAll(educationDAO.getEducations());
-        courses.clear();
-        courses.addAll(courseDAO.getCourses());
-        teachers.clear();
-        teachers.addAll(teacherDAO.getTeachers());
-        students.clear();
-        students.addAll(studentDAO.getStudents());
     }
 
     public List<Education> getEducations() {

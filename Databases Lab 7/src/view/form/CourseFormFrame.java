@@ -2,7 +2,6 @@ package view.form;
 
 import view.event.CourseFormEvent;
 import view.listener.CourseFormListener;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JFrame;

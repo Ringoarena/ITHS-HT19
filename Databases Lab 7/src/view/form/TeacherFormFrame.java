@@ -2,7 +2,6 @@ package view.form;
 
 import view.event.TeacherFormEvent;
 import view.listener.TeacherFormListener;
-
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.EventListenerList;

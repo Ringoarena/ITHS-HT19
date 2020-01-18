@@ -57,5 +57,4 @@ public class Student {
     public LocalDate getBirthDate() {
         return birthDate;
     }
-    
 }

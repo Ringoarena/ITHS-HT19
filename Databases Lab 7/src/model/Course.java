@@ -12,14 +12,14 @@ import java.util.Set;
 public class Course {
     @Id
     @GeneratedValue
-    int id;
-    String name;
-    LocalDate startDate;
-    LocalDate endDate;
+    private int id;
+    private String name;
+    private LocalDate startDate;
+    private LocalDate endDate;
     @ManyToMany
-    Set<Education> educations;
+    private Set<Education> educations;
     @ManyToMany
-    Set<Teacher> teachers;
+    private Set<Teacher> teachers;
 
     public Course() {
         educations = new HashSet<>();

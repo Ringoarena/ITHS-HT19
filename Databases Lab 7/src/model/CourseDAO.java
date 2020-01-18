@@ -6,9 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-/**
- * @author sonde
- */
 public class CourseDAO {
     EntityManagerFactory emf;
 
@@ -51,13 +48,6 @@ public class CourseDAO {
         em.close();
     }
 
-    public Course getById(int id) {
-        EntityManager em = emf.createEntityManager();
-        Course course = em.find(Course.class, id);
-        em.close();
-        return course;
-    }
-
     public void updateCourseName(int id,String newName) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -74,14 +64,6 @@ public class CourseDAO {
         em.close();
         return courses;
     }
-//    public List<Course> getCourses() {
-//        EntityManager em = emf.createEntityManager();
-//        List<Course> courses = em.createQuery("SELECT c FROM Course AS c "
-//                + "LEFT JOIN FETCH c.educations "
-//                + "LEFT JOIN FETCH c.teachers", Course.class).getResultList();
-//        em.close();
-//        return courses;
-//    }
 
     public List<Teacher> getCourseTeachers(int courseId) {
         EntityManager em = emf.createEntityManager();

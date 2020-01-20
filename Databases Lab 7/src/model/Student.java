@@ -46,6 +46,10 @@ public class Student {
         education.removeStudent(this);
     }
 
+    public void clearEducation() {
+        this.education = null;
+    }
+
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }

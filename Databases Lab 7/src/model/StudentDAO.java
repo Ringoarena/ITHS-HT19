@@ -26,7 +26,7 @@ public class StudentDAO {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Student student = em.find(Student.class, id);
-        student.removeEducation(student.getEducation());
+        student.clearEducation();
         em.remove(student);
         em.getTransaction().commit();
         em.close();

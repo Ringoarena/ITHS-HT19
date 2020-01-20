@@ -27,7 +27,7 @@ public class TeacherDAO {
         em.getTransaction().begin();
         Teacher teacher = em.find(Teacher.class, id);
         for (Course course : teacher.getCourses()) {
-            teacher.removeCourse(course);
+            course.getTeachers().remove(teacher);
         }
         em.remove(teacher);
         em.getTransaction().commit();

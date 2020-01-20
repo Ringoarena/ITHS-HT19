@@ -27,11 +27,13 @@ public class EducationDAO {
         em.getTransaction().begin();
         Education education = em.find(Education.class, id);
         for (Course course: education.getCourses()) {
-            education.removeCourse(course);
+            course.getEducations().remove(education);
         }
+        education.getCourses().clear();
         for (Student student : education.getStudents()) {
-            education.removeStudent(student);
+            student.clearEducation();
         }
+        education.getStudents().clear();
         em.remove(education);
         em.getTransaction().commit();
         em.close();
@@ -54,7 +56,7 @@ public class EducationDAO {
         Education education = em.find(Education.class, educationId);
         if (student.getEducation() != null) {
             em.getTransaction().begin();
-            student.removeEducation(student.getEducation());
+            student.clearEducation();
             em.getTransaction().commit();
         }
         em.getTransaction().begin();

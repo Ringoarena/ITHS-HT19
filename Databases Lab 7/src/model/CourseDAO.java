@@ -27,11 +27,13 @@ public class CourseDAO {
         em.getTransaction().begin();
         Course course = em.find(Course.class, id);
         for (Education education : course.getEducations()) {
-            course.removeEducation(education);
+            education.getCourses().remove(course);
         }
+        course.getEducations().clear();
         for (Teacher teacher : course.getTeachers()) {
-            course.removeTeacher(teacher);
+            teacher.getCourses().remove(course);
         }
+        course.getTeachers().clear();
         em.remove(course);
         em.getTransaction().commit();
         em.close();

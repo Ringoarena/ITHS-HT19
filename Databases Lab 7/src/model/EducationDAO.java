@@ -56,7 +56,7 @@ public class EducationDAO {
         Education education = em.find(Education.class, educationId);
         if (student.getEducation() != null) {
             em.getTransaction().begin();
-            student.clearEducation();
+            student.removeEducation(student.getEducation());
             em.getTransaction().commit();
         }
         em.getTransaction().begin();

@@ -6,13 +6,14 @@ import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeacherDAO {
+public class TeacherDAO implements TeacherDAOInterface {
     EntityManagerFactory emf;
 
     public TeacherDAO() {
         emf = Persistence.createEntityManagerFactory("DBLab7PU");
     }
 
+    @Override
     public Teacher addTeacher(Teacher teacher) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -22,6 +23,7 @@ public class TeacherDAO {
         return teacher;
     }
 
+    @Override
     public void removeTeacherById(int id) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -34,7 +36,8 @@ public class TeacherDAO {
         em.close();
     }
 
-    public void updateTeacherName(int id,String newName) {
+    @Override
+    public void updateTeacherName(int id, String newName) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Teacher teacher = em.find(Teacher.class, id);
@@ -44,6 +47,7 @@ public class TeacherDAO {
         em.close();
     }
 
+    @Override
     public List<Teacher> getTeachers() {
         EntityManager em = emf.createEntityManager();
         List<Teacher> teachers = em.createQuery(" SELECT t FROM Teacher AS t ", Teacher.class).getResultList();
@@ -51,6 +55,7 @@ public class TeacherDAO {
         return teachers;
     }
 
+    @Override
     public List<Course> getTeacherCourses(int teacherId) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();

@@ -4,16 +4,28 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class MyEntityManager {
-    EducationDAO educationDAO;
-    CourseDAO courseDAO;
-    TeacherDAO teacherDAO;
-    StudentDAO studentDAO;
+    EducationDAOInterface educationDAO;
+    CourseDAOInterface courseDAO;
+    TeacherDAOInterface teacherDAO;
+    StudentDAOInterface studentDAO;
 
     public MyEntityManager() {
-        educationDAO = new EducationDAO();
-        courseDAO = new CourseDAO();
-        teacherDAO = new TeacherDAO();
-        studentDAO = new StudentDAO();
+    }
+
+    public void setEducationDAO(EducationDAOInterface educationDAO) {
+        this.educationDAO = educationDAO;
+    }
+
+    public void setCourseDAO(CourseDAOInterface courseDAO) {
+        this.courseDAO = courseDAO;
+    }
+
+    public void setTeacherDAO(TeacherDAOInterface teacherDAO) {
+        this.teacherDAO = teacherDAO;
+    }
+
+    public void setStudentDAO(StudentDAOInterface studentDAO) {
+        this.studentDAO = studentDAO;
     }
 
     public void createEducation(String name, LocalDate startDate, LocalDate endDate) {

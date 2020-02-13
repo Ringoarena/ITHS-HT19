@@ -6,13 +6,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class CourseDAO {
+public class CourseDAO implements CourseDAOInterface {
     EntityManagerFactory emf;
 
     public CourseDAO() {
         emf = Persistence.createEntityManagerFactory("DBLab7PU");
     }
 
+    @Override
     public Course addCourse(Course course) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -22,6 +23,7 @@ public class CourseDAO {
         return course;
     }
 
+    @Override
     public void removeCourseById(int id) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -39,6 +41,7 @@ public class CourseDAO {
         em.close();
     }
 
+    @Override
     public void addTeacherToCourse(int courseId, int teacherId) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -50,7 +53,8 @@ public class CourseDAO {
         em.close();
     }
 
-    public void updateCourseName(int id,String newName) {
+    @Override
+    public void updateCourseName(int id, String newName) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Course course = em.find(Course.class, id);
@@ -60,6 +64,7 @@ public class CourseDAO {
         em.close();
     }
 
+    @Override
     public List<Course> getCourses() {
         EntityManager em = emf.createEntityManager();
         List<Course> courses = em.createQuery("SELECT c FROM Course AS c ", Course.class).getResultList();
@@ -67,6 +72,7 @@ public class CourseDAO {
         return courses;
     }
 
+    @Override
     public List<Teacher> getCourseTeachers(int courseId) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -77,6 +83,7 @@ public class CourseDAO {
         return list;
     }
 
+    @Override
     public List<Education> getCourseEducations(int courseId) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();

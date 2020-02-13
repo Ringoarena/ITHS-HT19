@@ -6,13 +6,14 @@ import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentDAO {
+public class StudentDAO implements StudentDAOInterface {
     EntityManagerFactory emf;
 
     public StudentDAO() {
         emf = Persistence.createEntityManagerFactory("DBLab7PU");
     }
 
+    @Override
     public Student addStudent(Student student) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -22,6 +23,7 @@ public class StudentDAO {
         return student;
     }
 
+    @Override
     public void removeStudentById(int id) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -32,7 +34,8 @@ public class StudentDAO {
         em.close();
     }
 
-    public void updateStudentName(int id,String newName) {
+    @Override
+    public void updateStudentName(int id, String newName) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Student student = em.find(Student.class, id);
@@ -42,6 +45,7 @@ public class StudentDAO {
         em.close();
     }
 
+    @Override
     public List<Student> getStudents() {
         EntityManager em = emf.createEntityManager();
         List<Student> students=em.createQuery("SELECT s FROM Student s",Student.class).getResultList();
@@ -49,6 +53,7 @@ public class StudentDAO {
         return students;
     }
 
+    @Override
     public List<Education> getStudentEducation(int studentId) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();

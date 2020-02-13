@@ -6,13 +6,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class EducationDAO {
+public class EducationDAO implements EducationDAOInterface {
     EntityManagerFactory emf;
 
     public EducationDAO() {
         emf = Persistence.createEntityManagerFactory("DBLab7PU");
     }
 
+    @Override
     public Education addEducation(Education education) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -22,6 +23,7 @@ public class EducationDAO {
         return education;
     }
 
+    @Override
     public void removeEducationById(int id) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -39,6 +41,7 @@ public class EducationDAO {
         em.close();
     }
 
+    @Override
     public void addCourseToEducation(int educationId, int courseId){
         EntityManager em=emf.createEntityManager();
         em.getTransaction().begin();
@@ -50,6 +53,7 @@ public class EducationDAO {
         em.close();
     }
 
+    @Override
     public void addStudentToEducation(int educationId, int studentId) {
         EntityManager em = emf.createEntityManager();
         Student student = em.find(Student.class, studentId);
@@ -66,7 +70,8 @@ public class EducationDAO {
         em.close();
     }
 
-    public void updateEducationName(int id,String newName) {
+    @Override
+    public void updateEducationName(int id, String newName) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Education education = em.find(Education.class, id);
@@ -76,6 +81,7 @@ public class EducationDAO {
         em.close();
     }
 
+    @Override
     public List<Education> getEducations() {
         EntityManager em = emf.createEntityManager();
         List<Education> educations = em.createQuery("SELECT e FROM Education AS e ", Education.class).getResultList();
@@ -83,6 +89,7 @@ public class EducationDAO {
         return educations;
     }
 
+    @Override
     public List<Course> getEducationCourses(int educationId) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -93,6 +100,7 @@ public class EducationDAO {
         return list;
     }
 
+    @Override
     public List<Student> getEducationStudents(int educationId) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
